@@ -12,12 +12,13 @@ Success in statistics and data science is dependent on the development of both a
 - Identifying pain points in getting your analysis to be reproducible.
 - The role of documentation, sharing, version control, automation, and organization in making your research more reproducible.
 - Introducing tools to solve these problems, specifically R, RStudio, RMarkdown, git, GitHub, and make.
-- Computational reproducibility specific to Bayesian methodologies.
+- Strategies for scaling these tools and methods for larger more complex projects.
 
 Workshop attendees will work through several exercises and get first-hand experience with using relevant tool-chains and techniques, including R/RStudio, literate programming with R Markdown, automation with make, and collaboration and version control with git/GitHub.
 
-## Schedule
+## Schedule - TBD
 
+<!--
 | Time          | Activity                                |
 |:--------------|:----------------------------------------|
 | 09:00 - 09:20 | [Welcome](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/00-welcome/00-welcome.html)       |  
@@ -33,7 +34,9 @@ Workshop attendees will work through several exercises and get first-hand experi
 | 16:00 - 16:45 | make in action                          |
 | 16:45 - 17:00 | [Parting remarks](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/08-parting-remarks/08-parting-remarks.html)  |
 
-### Welcome, literate programming, and naming (9:00 - 10:30)
+-->
+
+### Welcome, literate programming, and naming
 
 - Recognize the problems that reproducible research helps address and identify 
 pain points in getting your analysis to be reproducible.
@@ -44,7 +47,7 @@ your research more reproducible.
   - Hands on activity: Updating an analysis when the source data changes
 - Naming best practices
 
-### Organization and version control with Git and GitHub (11:00 - 12:30)
+### Organization and version control with Git and GitHub
 
 - Project organization
   - File and folder organization for projects
@@ -66,7 +69,7 @@ your research more reproducible.
   - Push local repository from RStudio to Github.
   - Demonstrate the ability to host code from RStudio to Github.
 
-### Scaling reproducible projects + Make (14:00 - 15:30)
+### Scaling reproducible projects + Make 
 
 - Practical example - Scottish lip cancer
   - Reproducible R Markdown document with "full Bayesian analysis" including data munging, EDA, model fitting and analysis.
@@ -76,20 +79,16 @@ your research more reproducible.
 - Using make to automate and scale
   - Introduce make
   - Review make syntax
-  - Introduce hands on exercise - adapt 
+  - Introduce hands on exerciseß
 
-### make in action + Q&A (16:00 - 17:00)
 
-- Finish up hands-on exercise + Live demo
-- Local installation
-- Q&A
 
 ## Computing requirements
 
 - R - 3.5.0
 - [RStudio](https://www.rstudio.com/products/rstudio/download/preview/) - 1.2.707 or higher
 - git
-  - OSX - install Git for Mac by downloading and running the installer or install homebrew and use it to install git via brew install git.
+  - OSX - install Git for Mac by downloading and running the xcode installer or install homebrew and use it to install git via `brew install git`.
   - Unix / Linux - you should be able to install git via your prefered package manager (e.g. apt, dnf, yum).
   - Windows - install [Git for Windows](https://gitforwindows.org/). This will provide you with git, the bash shell, and ssh in windows.
 - System libraries and packages (including development headers):
@@ -99,35 +98,21 @@ your research more reproducible.
   - proj
   - texlive
   - udunits2
-- R packages:
-  - From CRAN:
+- R packages (from CRAN):
     - tidyverse
     - rmarkdown
     - shiny
     - rjags
     - rstan
     - sf
-  - From github:
-    - tidybayes: https://github.com/mjskay/tidybayes
-    - ggplot2: https://github.com/tidyverse/ggplot2
+    - tidybayes
+    - ggplot2
 
 ## Instructors
 
-**[Mine Çetinkaya-Rundel](http://www2.stat.duke.edu/~mc301/)** - Duke University + RStudio
-
-Mine is an Associate Professor of the Practice of Statistical Science at Duke 
-University and a Professional Educator at RStudio. Her work focuses on 
-innovation in statistics and data science pedagogy, with an emphasis on computation, reproducible research, open-source education, and student-centered 
-learning. She is the author of three open-source introductory statistics 
-textbooks as part of the OpenIntro project and teaches the popular Statistics 
-with R MOOC on Coursera.
-
 **[Colin Rundel](http://www2.stat.duke.edu/~cr173/)** - Duke University
 
-Colin is an Assistant Professor of the Practice of Statistical Science at Duke 
-University. His research interests include applied spatial statistics with an 
-emphasis on Bayesian statistics and computational methods.
-
+Colin is a Assistant Professor of the Practice in the Department of Statistical Science at Duke University where he has developed and taught a number of Statistical Computing courses for undergraduate, master's and Ph.D. levels students. His pedagogical and research interests are in the area of statistical computing, data science, and spatial statistics.
 ## Acknowledgements
 
 - Naming, organization, and version control sections are derived from [Data Carpentry](https://github.com/datacarpentry)'s corresponding modules.
