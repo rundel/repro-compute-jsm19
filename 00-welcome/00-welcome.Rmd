@@ -1,7 +1,7 @@
 ---
-title: "Reproducible Computing <br> @ ISBA 2018"
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
-date: "June 24, 2018"
+title: "Reproducible Computing <br> @ JSM 2019"
+author: "Colin Rundel"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
@@ -22,19 +22,19 @@ class: center, middle
 
 | Time          | Activity                                |
 |:--------------|:----------------------------------------|
-| 9:00 - 10:30  | Literate programming and organization   |  
-| 10:10 - 11:00 | :coffee:                                |       
-| 11:00 - 12:30 | Version control with Git and GitHub     |  
+| 08:30 - 10:15 | Literate programming and organization  |  
+| 10:15 - 10:30 | :coffee:                                |       
+| 10:30 - 12:30 | Version control with Git and GitHub     |  
 | 12:30 - 14:00 | :fork_and_knife:                        |               
-| 14:00 - 15:30 | Scaling reproducible projects           |    
-| 15:30 - 16:00 | :coffee:                                |       
-| 16:00 - 17:00 | Automation with make                    | 
+| 14:00 - 15:15 | Scaling reproducible projects, make     |    
+| 15:15 - 15:30 | :coffee:                                |       
+| 15:30 - 17:00 | More make, wrapup                       | 
 
 ---
 
 class: center, middle
 
-# Reproducibility: who cares?
+# Reproducibility: <br/> Who cares?
 
 ---
 
@@ -53,7 +53,7 @@ discovered that the data must have been faked.
 - Methods we'll discuss today can't prevent this, but they can make it 
 easier to discover issues.
 
-<font size="3">Source: http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent</font>
+<font size="2">Source: http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent</font>
 
 ---
 
@@ -67,7 +67,9 @@ associated with current depression [...].
 
 <br><br><br><br><br>
 
-<font size="3">Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/</font>
+<font size=2.5>
+Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/
+</font>
 
 ---
 
@@ -79,7 +81,9 @@ associated with current depression [...].
 
 <br><br><br><br><br><br>
 
-<font size="3">Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151</font>
+<font size=2.5>
+Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151
+</font>
 
 ---
 
@@ -93,13 +97,28 @@ associated with current depression [...].
 
 <br>
 
-<font size="3">Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151</font>
+<font size=2.5>Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151</font>
+
+
+---
+
+## One in five genetics papers contains errors thanks to Microsoft Excel
+
+* "Autoformatting in Microsoft Excel has caused many a headache—but now, a new study shows that one in five genetics papers in top scientific journals contains errors from the program, The Washington Post reports. The errors often arose when gene names in a spreadsheet were automatically changed to calendar dates or numerical values."
+
+* "For example, one gene called Septin-2 is commonly shortened to SEPT2, but is changed to 2-SEP and stored as the date 2 September 2016 by Excel."
+
+<br/>
+
+<font size=2.5>
+Source: https://www.sciencemag.org/news/2016/08/one-five-genetics-papers-contains-errors-thanks-microsoft-excel
+</font>
 
 ---
 
 class: center, middle
 
-# Reproducibility: why should you care?
+# Reproducibility: <br/> Why should you care?
 
 ---
 
@@ -115,7 +134,7 @@ class: center, middle
 
 <br><br><br><br><br>
 
-<font size="3">Source: Karl Broman</font>
+<font size=2.5>Source: Karl Broman - [steps to reproducible research](https://kbroman.org/steps2rr/)</font>
 
 ---
 
@@ -125,8 +144,8 @@ class: center, middle
 
 >Your closest collaborator is you six months ago, <br>
 but you don’t reply to emails.
-<br><br>
-<font size="3">- Mark Holder</font>
+<br>
+- Mark Holder
 
 <br><br><br>
 
@@ -134,7 +153,7 @@ but you don’t reply to emails.
 
 class: center, middle
 
-# Reproducibility: how?
+# Reproducibility: <br/> How?
 
 ---
 
@@ -142,8 +161,7 @@ class: center, middle
 
 - Are the tables and figures reproducible from the code and data?
 - Does the code actually do what you think it does?
-- In addition to what was done, is it clear *why* it was done? (e.g., how 
-were parameter settings chosen?)
+- In addition to what was done, is it clear *why* it was done? (e.g., how were parameter settings chosen?)
 - Can the code be used for other data?
 - Can you extend the code to do other things?
 
@@ -188,5 +206,5 @@ inseparable
 
 ## Computing access
 
-- Go to http://bit.ly/repro-compute-server
-- Use your assigned number to generate your server access
+- Go to http://bit.ly/---
+

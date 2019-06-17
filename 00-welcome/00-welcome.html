@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Reproducible Computing   @ ISBA 2018</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Mine Çetinkaya-Rundel &amp; Colin Rundel" />
-    <meta name="date" content="2018-06-24" />
+    <title>Reproducible Computing   @ JSM 2019</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Colin Rundel" />
+    <meta name="date" content="2019-07-27" />
     <link rel="stylesheet" href="../slides.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Reproducible Computing <br> @ ISBA 2018
-### Mine Çetinkaya-Rundel &amp; Colin Rundel
-### June 24, 2018
+# Reproducible Computing <br> @ JSM 2019
+### Colin Rundel
+### July 27, 2019
 
 ---
 
@@ -28,19 +28,19 @@ class: center, middle
 
 | Time          | Activity                                |
 |:--------------|:----------------------------------------|
-| 9:00 - 10:30  | Literate programming and organization   |  
-| 10:10 - 11:00 | :coffee:                                |       
-| 11:00 - 12:30 | Version control with Git and GitHub     |  
+| 08:30 - 10:15 | Literate programming and organization  |  
+| 10:15 - 10:30 | :coffee:                                |       
+| 10:30 - 12:30 | Version control with Git and GitHub     |  
 | 12:30 - 14:00 | :fork_and_knife:                        |               
-| 14:00 - 15:30 | Scaling reproducible projects           |    
-| 15:30 - 16:00 | :coffee:                                |       
-| 16:00 - 17:00 | Automation with make                    | 
+| 14:00 - 15:15 | Scaling reproducible projects, make     |    
+| 15:15 - 15:30 | :coffee:                                |       
+| 15:30 - 17:00 | More make, wrapup                       | 
 
 ---
 
 class: center, middle
 
-# Reproducibility: who cares?
+# Reproducibility: &lt;br/&gt; Who cares?
 
 ---
 
@@ -59,7 +59,7 @@ discovered that the data must have been faked.
 - Methods we'll discuss today can't prevent this, but they can make it 
 easier to discover issues.
 
-&lt;font size="3"&gt;Source: http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent&lt;/font&gt;
+&lt;font size="2"&gt;Source: http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent&lt;/font&gt;
 
 ---
 
@@ -73,7 +73,9 @@ associated with current depression [...].
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;font size="3"&gt;Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/&lt;/font&gt;
+&lt;font size=2.5&gt;
+Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/
+&lt;/font&gt;
 
 ---
 
@@ -85,7 +87,9 @@ associated with current depression [...].
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;font size="3"&gt;Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151&lt;/font&gt;
+&lt;font size=2.5&gt;
+Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151
+&lt;/font&gt;
 
 ---
 
@@ -99,13 +103,28 @@ associated with current depression [...].
 
 &lt;br&gt;
 
-&lt;font size="3"&gt;Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151&lt;/font&gt;
+&lt;font size=2.5&gt;Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151&lt;/font&gt;
+
+
+---
+
+## One in five genetics papers contains errors thanks to Microsoft Excel
+
+* "Autoformatting in Microsoft Excel has caused many a headache—but now, a new study shows that one in five genetics papers in top scientific journals contains errors from the program, The Washington Post reports. The errors often arose when gene names in a spreadsheet were automatically changed to calendar dates or numerical values."
+
+* "For example, one gene called Septin-2 is commonly shortened to SEPT2, but is changed to 2-SEP and stored as the date 2 September 2016 by Excel."
+
+&lt;br/&gt;
+
+&lt;font size=2.5&gt;
+Source: https://www.sciencemag.org/news/2016/08/one-five-genetics-papers-contains-errors-thanks-microsoft-excel
+&lt;/font&gt;
 
 ---
 
 class: center, middle
 
-# Reproducibility: why should you care?
+# Reproducibility: &lt;br/&gt; Why should you care?
 
 ---
 
@@ -121,7 +140,7 @@ class: center, middle
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;font size="3"&gt;Source: Karl Broman&lt;/font&gt;
+&lt;font size=2.5&gt;Source: Karl Broman - [steps to reproducible research](https://kbroman.org/steps2rr/)&lt;/font&gt;
 
 ---
 
@@ -131,8 +150,8 @@ class: center, middle
 
 &gt;Your closest collaborator is you six months ago, &lt;br&gt;
 but you don’t reply to emails.
-&lt;br&gt;&lt;br&gt;
-&lt;font size="3"&gt;- Mark Holder&lt;/font&gt;
+&lt;br&gt;
+- Mark Holder
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;
 
@@ -140,7 +159,7 @@ but you don’t reply to emails.
 
 class: center, middle
 
-# Reproducibility: how?
+# Reproducibility: &lt;br/&gt; How?
 
 ---
 
@@ -148,8 +167,7 @@ class: center, middle
 
 - Are the tables and figures reproducible from the code and data?
 - Does the code actually do what you think it does?
-- In addition to what was done, is it clear *why* it was done? (e.g., how 
-were parameter settings chosen?)
+- In addition to what was done, is it clear *why* it was done? (e.g., how were parameter settings chosen?)
 - Can the code be used for other data?
 - Can you extend the code to do other things?
 
@@ -194,9 +212,9 @@ inseparable
 
 ## Computing access
 
-- Go to http://bit.ly/repro-compute-server
-- Use your assigned number to generate your server access
+- Go to http://bit.ly/---
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
@@ -206,26 +224,79 @@ inseparable
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
   }
-});
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
