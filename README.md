@@ -1,40 +1,40 @@
 # Reproducible Computing
 
-Short-course at [ISBA 2018](https://bayesian.org/isba2018/Short-Courses/)  
-2018-06-24  
-9am - 5pm
+Continuing Education Course, JSM 2019
+Biometrics Section
+2019-07-27  
+8:30 am - 5 pm
 
 ## Abstract
 
-Success in statistics and data science is dependent on the development of both analytical and computational skills. This workshop will cover:
+Success in statistics and data science is dependent on the development of both analytical and computational skills. 
 
-- Recognizing the problems that reproducible research helps address.
-- Identifying pain points in getting your analysis to be reproducible.
-- The role of documentation, sharing, version control, automation, and organization in making your research more reproducible.
-- Introducing tools to solve these problems, specifically R, RStudio, RMarkdown, git, GitHub, and make.
-- Strategies for scaling these tools and methods for larger more complex projects.
+This workshop will cover: 
+
+- Recognizing the problems that reproducible research helps address. 
+- Identifying pain points in getting your analysis to be reproducible. 
+- The role of documentation, sharing, version control, automation, and organization in making your research more reproducible. 
+- Introducing tools to solve these problems, specifically R, RStudio, RMarkdown, git, GitHub, and make. - Strategies for scaling these tools and methods for larger more complex projects. 
 
 Workshop attendees will work through several exercises and get first-hand experience with using relevant tool-chains and techniques, including R/RStudio, literate programming with R Markdown, automation with make, and collaboration and version control with git/GitHub.
 
 ## Schedule - TBD
 
-<!--
 | Time          | Activity                                |
 |:--------------|:----------------------------------------|
-| 09:00 - 09:20 | [Welcome](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/00-welcome/00-welcome.html)       |  
-| 09:20 - 10:00 | [Literate programming](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/01-lit-program/01-lit-program.html)  |
-| 10:00 - 10:30 | [Naming](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/02-naming/02-naming.html)          |
-| 10:30 - 11:00 | *Coffee break*                          |
-| 11:00 - 11:30 | [Organization](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/03-organization/03-organization.html)        |
-| 11:00 - 12:30 | [Version control with Git and GitHub](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/04-git/04-git.html) |
+| 08:30 - 09:00 | Welcome                                 |  
+| 09:00 - 09:40 | Literate programming                    |
+| 09:40 - 10:15 | Naming                                  |
+| 10:15 - 10:30 | *Coffee break*                          |
+| 10:30 - 11:00 | Organization                            |
+| 11:00 - 12:30 | Version control with Git and GitHub     |
 | 12:30 - 14:00 | *Lunch break*                           |
-| 14:00 - 14:45 | [Scaling reproducible projects](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/05-scaling/05-scaling.html)                         |
-| 14:40 - 15:30 | [Introduction to make](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/06-make/06-make.html)          |
-| 15:30 - 16:00 | *Coffee break*                          |
-| 16:00 - 16:45 | make in action                          |
-| 16:45 - 17:00 | [Parting remarks](https://htmlpreview.github.io/?https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/08-parting-remarks/08-parting-remarks.html)  |
+| 14:00 - 14:30 | Scaling reproducible projects           |
+| 14:30 - 15:15 | Introduction to make                    |
+| 15:15 - 15:30 | *Coffee break*                          |
+| 15:30 - 16:30 | make in action                          |
+| 16:30 - 17:00 | Parting remarks                         |
 
--->
 
 ### Welcome, literate programming, and naming
 
@@ -68,6 +68,7 @@ your research more reproducible.
   - Navigate through the basics of using git in RStudio.
   - Push local repository from RStudio to Github.
   - Demonstrate the ability to host code from RStudio to Github.
+- usethis Package
 
 ### Scaling reproducible projects + Make 
 
@@ -85,37 +86,17 @@ your research more reproducible.
 
 ## Computing requirements
 
-- R - 3.5.0
-- [RStudio](https://www.rstudio.com/products/rstudio/download/preview/) - 1.2.707 or higher
-- git
-  - OSX - install Git for Mac by downloading and running the xcode installer or install homebrew and use it to install git via `brew install git`.
-  - Unix / Linux - you should be able to install git via your prefered package manager (e.g. apt, dnf, yum).
-  - Windows - install [Git for Windows](https://gitforwindows.org/). This will provide you with git, the bash shell, and ssh in windows.
-- System libraries and packages (including development headers):
-  - jags
-  - geos
-  - gdal
-  - proj
-  - texlive
-  - udunits2
-- R packages (from CRAN):
-    - tidyverse
-    - rmarkdown
-    - shiny
-    - rjags
-    - rstan
-    - sf
-    - tidybayes
-    - ggplot2
+An R + RStudio computing environment will be provided for all students via RStudio Cloud. All that will be needed the day of the event is a laptop and a Google Account that can be used for authentication.
 
-## Instructors
+## Instructor
 
 **[Colin Rundel](http://www2.stat.duke.edu/~cr173/)** - Duke University
 
 Colin is a Assistant Professor of the Practice in the Department of Statistical Science at Duke University where he has developed and taught a number of Statistical Computing courses for undergraduate, master's and Ph.D. levels students. His pedagogical and research interests are in the area of statistical computing, data science, and spatial statistics.
+
 ## Acknowledgements
 
-- Naming, organization, and version control sections are derived from [Data Carpentry](https://github.com/datacarpentry)'s corresponding modules.
+- [Data Carpentry](https://github.com/datacarpentry)'s modules on naming, organization, and version control.
 - [Happy git with R](http://happygitwithr.com/) by [Jenny Bryan](http://github.com/jennybc).
 
 ## License
