@@ -1,7 +1,7 @@
 ---
 title: "Literate Programming"
-subtitle: "Reproducible Computing <br> @ ISBA 2018"
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
+subtitle: "Reproducible Computing <br> @ JSM 2019"
+author: "Colin Rundel"
 date: "June 24, 2018"
 output:
   xaringan::moon_reader:
@@ -32,7 +32,7 @@ informal methods that reinforce each other."
 
 - These ideas have been around for years!
 - And tools for putting them to practice have also been around
-- But they have never been as accessible as the current tools: R Markdown
+- But they have never been as accessible as the current tools: R Markdown, Jupyter, etc.
 
 ---
 
@@ -49,11 +49,10 @@ friendly) markup language for creating pdf documents.
 
 - Why I love Markdown:
     + Simple syntax means easy to learn and use.
-    + Focus on **content**, rather than **coding** and debugging 
-    **errors**.
+    + Focus on **content**, rather than **coding** and **debugging**.
     + Allows for easy web authoring.
-    + Once you have the basics down, you can get fancy and add HTML,
-    JavaScript, and CSS.
+    + Once you have the basics down, you can get fancy and customize everything (via HTML,
+    JavaScript, and CSS).
 
 ---
 
@@ -71,7 +70,7 @@ Well, it's R + Markdown:
 
 - Rendering of R code to produce output and plots
 
-- Ability to include LaTeX: $\hat{y} = \beta_0 + \beta_1 \times x$
+- Ability to include LaTeX: e.g. $\hat{y} = \beta_0 + \beta_1 \times x$
 
 ---
 
