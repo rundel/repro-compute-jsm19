@@ -1,7 +1,7 @@
 ---
-title: Scaling reproducible projects
-subtitle: "Reproducible Computing <br> @ ISBA 2018"
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
+title: "Scaling reproducible projects"
+subtitle: "Reproducible Computing <br> @ JSM 2019"
+author: "Colin Rundel"
 date: "June 24, 2018"
 output:
   xaringan::moon_reader:
@@ -54,12 +54,18 @@ What makes each of these slow?
 ```r
 ...
 
-shape_dir = tempdir()
+shape_dir = here("data/shapefiles")
+dir.create(shape_dir, showWarnings = FALSE, recursive = TRUE)
 
 base_url = "http://web1.sph.emory.edu/users/lwaller/book/ch9/"
 shapefiles = c("scot.shp", "scot.dbf", "scot.shx")
+
 for(file in shapefiles) {
-*  download.file(file.path(base_url, file), destfile = file.path(shape_dir, file), quiet = TRUE)
+*  download.file(
+*    file.path(base_url, file), 
+*    destfile = file.path(shape_dir, file), 
+*    quiet = TRUE
+*  )
 }
 
 ...
@@ -94,8 +100,8 @@ data = list(
 ) 
 
 options(mc.cores = parallel::detectCores())
-*full_fit <- rstan::stan(model_code = car_model, data = data, 
-*                        iter = 1000, chains = 2, verbose = FALSE)
+*full_fit = rstan::stan(model_code = car_model, data = data, 
+*                       iter = 1000, chains = 2, verbose = FALSE)
 ```
 
 ---

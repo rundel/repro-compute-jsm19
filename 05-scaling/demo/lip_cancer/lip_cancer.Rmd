@@ -1,10 +1,10 @@
 ---
 title: Example - Scottish Lip Cancer
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
-date: "June 24, 2018"
+author: "Colin Rundel"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
-    css: "../slides.css"
+    css: "slides.css"
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -23,6 +23,7 @@ knitr::opts_chunk$set(
 library(magrittr)
 library(ggplot2)
 library(Rcpp)
+library(here)
 ```
 
 ---
@@ -36,7 +37,6 @@ count: false
 ## The data
 
 ```{r get-data, include=FALSE}
-## Get data
 datafile = "http://web1.sph.emory.edu/users/lwaller/book/ch2/scotland.dat"
 
 col_names = read.table(datafile, nrows=1, sep=" ", stringsAsFactors = FALSE) %>% 
@@ -45,20 +45,25 @@ col_names = read.table(datafile, nrows=1, sep=" ", stringsAsFactors = FALSE) %>%
 
 data = read.table(datafile, header=FALSE, skip=1) %>%
   setNames(col_names)
+```
 
 
-## Get shapefile(s)
-
-shape_dir = tempdir()
+```{r get-shapefiles, include=FALSE}
+shape_dir = here("data/shapefiles")
+dir.create(shape_dir, showWarnings = FALSE, recursive = TRUE)
 
 base_url = "http://web1.sph.emory.edu/users/lwaller/book/ch9/"
 shapefiles = c("scot.shp", "scot.dbf", "scot.shx")
 for(file in shapefiles) {
-  download.file(file.path(base_url, file), destfile = file.path(shape_dir, file), quiet = TRUE)
+  download.file(
+    file.path(base_url, file), 
+    destfile = file.path(shape_dir, file), 
+    quiet = TRUE
+  )
 }
+```
 
-## Combine
-
+```{r combine, include=FALSE}
 lip_cancer = sf::read_sf(shape_dir) %>%
   sf::st_set_crs("+proj=longlat +datum=NAD27 +no_defs") %>%
   dplyr::rename(Name = NAME, District = ID) %>% 
@@ -94,7 +99,7 @@ lip_cancer %>% dplyr::transmute(Observed/Expected) %>% plot(asp=1, axes=TRUE)
 
 ---
 
-```{r neighbors, echo=FALSE, warning=FALSE}
+```{r neighbors, echo=FALSE, warning=FALSE, message=FALSE}
 d = sf::st_distance(lip_cancer)
 class(d) = NULL
 
@@ -130,13 +135,14 @@ where $E_i$ is the expected counts for each region (and serves as an offet) and 
 
 
 .footnote[
-*We have based the above and following off of Max Joseph's Exact sparse CAR models in Stan which is available [here](http://mc-stan.org/users/documentation/case-studies/mbjoseph-CARStan.html).*
+*The model above and following code is based on Max Joseph's Exact sparse CAR models in Stan which is available [here](http://mc-stan.org/users/documentation/case-studies/mbjoseph-CARStan.html).*
 ]
 
 ---
 
 ## A stan model
 
+.small[
 ```{r stan-model}
 car_model = "
   data {
@@ -166,6 +172,7 @@ car_model = "
   }
 "
 ```
+]
 
 ---
 
@@ -179,19 +186,22 @@ data = list(
 ) 
 
 options(mc.cores = parallel::detectCores())
-full_fit <- rstan::stan(model_code = car_model, data = data, 
-                        iter = 1000, chains = 2, verbose = FALSE)
+full_fit = rstan::stan(model_code = car_model, data = data, 
+                       iter = 1000, chains = 2, verbose = FALSE)
 ```
 
 ---
 
+.small[
 ```{r stan-params}
 print(full_fit, pars = c('beta', 'tau', 'phi', 'lp__'))
 ```
+]
 
 ---
 
+.small[
 ```{r stan-traceplots, fig.width=12}
 rstan::traceplot(full_fit, pars = c('beta', 'tau', 'phi', 'lp__'))
 ```
-
+]
