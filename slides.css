@@ -86,9 +86,19 @@ ul {
 li{
   margin: 10px 0;
 }
-.large { font-size: 130% }
-.midi { font-size: 90% }
-.small { font-size: 70% }
+
+.large { font-size: 22px }
+.midi { font-size: 18px }
+.small { font-size: 14px }
+.smaller { font-size: 12px }
+.tinyish { font-size: 11px }
+.tiny { font-size: 10px }
+
+.small .remark-code { font-size: 16px; }
+.smaller .remark-code { font-size: 14px; }
+.tinyish .remark-code { font-size: 12px; }
+.tiny .remark-code { font-size: 11px; }
+
 img, video, iframe {
   max-width: 100%;
 }
