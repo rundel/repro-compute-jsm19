@@ -1,8 +1,8 @@
 ---
 title: "Version control with <br> Git & GitHub"
-subtitle: "Reproducible Computing <br> @ ISBA 2018"
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
-date: "June 24, 2018"
+subtitle: "Reproducible Computing <br> @ JSM 2019"
+author: "Colin Rundel"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
@@ -284,7 +284,7 @@ This will cache your username password for 600,000 seconds, or ~1 week. This cac
 
 ## Follow along demo
 
-**Step 1:** Fork a repository. (Need inspiration? Fork this [one](https://github.com/rundel/repro-compute-isba18-demo).)
+**Step 1:** Fork a repository. (Need inspiration? Fork this [one](https://github.com/rundel/repro-compute-jsm19-demo).)
 
 **Step 2:** Clone your forked repository to obtain a local copy of the files into an RStudio project.
 
@@ -317,8 +317,8 @@ This will cache your username password for 600,000 seconds, or ~1 week. This cac
 - Look at the name of the repo on the upper left corner, for your fork it will say:
 
 ~~~
-[your-github-name]/repro-compute-isba18-demo
-forked from rundel/repro-compute-isba18-demo
+[your-github-name]/repro-compute-jsm19-demo
+forked from rundel/repro-compute-jsm19-demo
 ~~~
 
 ---
