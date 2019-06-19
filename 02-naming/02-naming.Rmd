@@ -1,8 +1,8 @@
 ---
 title: "Naming"
-subtitle: "Reproducible Computing <br> @ ISBA 2018"
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
-date: "June 24, 2018"
+subtitle: "Reproducible Computing <br> @ JSM 2019"
+author: "Colin Rundel"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
@@ -39,23 +39,22 @@ fig02_histogram-talk-attendance.png
 
 ## Three principles for (file) names
 
-1. Machine readable
+1. Human readable
 
-2. Human readable
+2. Machine parsable
 
-3. Plays well with default ordering
+3. Plays well with OS ordering
 
 ---
-
 class: center, middle
 
-# Machine readable
+# Machine Parsable
 
 ---
 
 ## Machine readable
 
-- Regular expression and globbing friendly: Avoid spaces, punctuation, accented 
+- Search (Regular expression and globbing) friendly: Avoid spaces, punctuation, accented 
 characters, case sensitivity
 
 - Easy to compute on: Deliberate use of delimiters
@@ -100,8 +99,18 @@ WorldCup-Players-04.csv
 
 Deliberate use of `"-"` and `"_"` allows recovery of meta-data from the filenames:
 
-- `"_"` underscore used to delimit units of meta-data you might want later
-- `"-"` hyphen used to delimit words
+- Use one to delimit units of meta-data you might want later
+- Use the other to delimit words
+- Stay consistent
+
+For example:
+
+```
+2019-09-01_Experiment-1_Rep-A.csv
+2019-09-01_Experiment-1_Rep-B.csv
+2019-09-07_Experiment-1_Rep-C.csv
+2019-09-07_Experiment-2_Rep-A.csv
+```
 
 ---
 
@@ -116,7 +125,7 @@ Deliberate use of `"-"` and `"_"` allows recovery of meta-data from the filename
 - New to regular expressions and globbing? be kind to yourself and avoid
     + Spaces in file names
     + Punctuation
-    + Accented characters
+    + Accented characters (Unicode in general)
     + Different files named `foo` and `Foo`
 
 ---
@@ -151,7 +160,7 @@ Easy to figure out what it is, based on its name
 
 class: center, middle
 
-# Plays well with default ordering
+# Plays well with OS ordering
 
 ---
 
@@ -185,48 +194,49 @@ Use the ISO 8601 standard for dates: YYYY-MM-DD
 
 ---
 
-## 
+## ISO8601
 
-![iso_psa](img/iso_8601.tiff)
+.center[
+![iso_psa](img/iso_8601.png)
+]
+
+.footnote[
+Source: [XKCD #1179](https://xkcd.com/1179/)
+]
 
 ---
 
-## Comprehensive map of all countries in the world that use the MM-DD-YYYY format
+## Comprehensive map of all countries that use the MM-DD-YYYY format
 
+.center[
 ![map_mmddyyy](img/map_mmddyyy.png)
+]
 
-<br>
-
-From https://twitter.com/donohoe/status/597876118688026624.
-
+.footnote[
+Source: https://twitter.com/donohoe/status/597876118688026624.
+]
 ---
 
 ## Left pad other numbers with zeros
 
 
-![logical_order](img/logical_order.png)
+```shell
+> ls
+01_data-cleaning.R
+02_fit-model.R
+10_final-figs-for-publication.R
+```
 
 <br>
 
 If you don’t left pad, you get this:
 
-~~~
+```shell
+> ls
 10_final-figs-for-publication.R
 1_data-cleaning.R
 2_fit-model.R
-~~~
-
-which is just sad :(
-
----
-
-## Recap: Plays well with default ordering
-
-- Put something numeric first
-
-- Use the ISO 8601 standard for dates
-
-- Left pad other numbers with zeros
+```
 
 ---
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
     <title>Naming</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Mine Çetinkaya-Rundel &amp; Colin Rundel" />
-    <meta name="date" content="2018-06-24" />
+    <meta charset="utf-8" />
+    <meta name="author" content="Colin Rundel" />
+    <meta name="date" content="2019-07-27" />
     <link rel="stylesheet" href="../slides.css" type="text/css" />
   </head>
   <body>
@@ -12,9 +12,9 @@
 class: center, middle, inverse, title-slide
 
 # Naming
-## Reproducible Computing <br> @ ISBA 2018
-### Mine Çetinkaya-Rundel &amp; Colin Rundel
-### June 24, 2018
+## Reproducible Computing <br> @ JSM 2019
+### Colin Rundel
+### July 27, 2019
 
 ---
 
@@ -45,23 +45,22 @@ fig02_histogram-talk-attendance.png
 
 ## Three principles for (file) names
 
-1. Machine readable
+1. Human readable
 
-2. Human readable
+2. Machine parsable
 
-3. Plays well with default ordering
+3. Plays well with OS ordering
 
 ---
-
 class: center, middle
 
-# Machine readable
+# Machine Parsable
 
 ---
 
 ## Machine readable
 
-- Regular expression and globbing friendly: Avoid spaces, punctuation, accented 
+- Search (Regular expression and globbing) friendly: Avoid spaces, punctuation, accented 
 characters, case sensitivity
 
 - Easy to compute on: Deliberate use of delimiters
@@ -106,8 +105,18 @@ WorldCup-Players-04.csv
 
 Deliberate use of `"-"` and `"_"` allows recovery of meta-data from the filenames:
 
-- `"_"` underscore used to delimit units of meta-data you might want later
-- `"-"` hyphen used to delimit words
+- Use one to delimit units of meta-data you might want later
+- Use the other to delimit words
+- Stay consistent
+
+For example:
+
+```
+2019-09-01_Experiment-1_Rep-A.csv
+2019-09-01_Experiment-1_Rep-B.csv
+2019-09-07_Experiment-1_Rep-C.csv
+2019-09-07_Experiment-2_Rep-A.csv
+```
 
 ---
 
@@ -122,7 +131,7 @@ Deliberate use of `"-"` and `"_"` allows recovery of meta-data from the filename
 - New to regular expressions and globbing? be kind to yourself and avoid
     + Spaces in file names
     + Punctuation
-    + Accented characters
+    + Accented characters (Unicode in general)
     + Different files named `foo` and `Foo`
 
 ---
@@ -157,7 +166,7 @@ Easy to figure out what it is, based on its name
 
 class: center, middle
 
-# Plays well with default ordering
+# Plays well with OS ordering
 
 ---
 
@@ -191,48 +200,49 @@ Use the ISO 8601 standard for dates: YYYY-MM-DD
 
 ---
 
-## 
+## ISO8601
 
-![iso_psa](img/iso_8601.tiff)
+.center[
+![iso_psa](img/iso_8601.png)
+]
+
+.footnote[
+Source: [XKCD #1179](https://xkcd.com/1179/)
+]
 
 ---
 
-## Comprehensive map of all countries in the world that use the MM-DD-YYYY format
+## Comprehensive map of all countries that use the MM-DD-YYYY format
 
+.center[
 ![map_mmddyyy](img/map_mmddyyy.png)
+]
 
-&lt;br&gt;
-
-From https://twitter.com/donohoe/status/597876118688026624.
-
+.footnote[
+Source: https://twitter.com/donohoe/status/597876118688026624.
+]
 ---
 
 ## Left pad other numbers with zeros
 
 
-![logical_order](img/logical_order.png)
+```shell
+&gt; ls
+01_data-cleaning.R
+02_fit-model.R
+10_final-figs-for-publication.R
+```
 
 &lt;br&gt;
 
 If you don’t left pad, you get this:
 
-~~~
+```shell
+&gt; ls
 10_final-figs-for-publication.R
 1_data-cleaning.R
 2_fit-model.R
-~~~
-
-which is just sad :(
-
----
-
-## Recap: Plays well with default ordering
-
-- Put something numeric first
-
-- Use the ISO 8601 standard for dates
-
-- Left pad other numbers with zeros
+```
 
 ---
 
@@ -258,6 +268,7 @@ Pros
 
 - Payoffs accumulate as your skills evolve and projects get more complex
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
@@ -267,26 +278,79 @@ Pros
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
   }
-});
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
