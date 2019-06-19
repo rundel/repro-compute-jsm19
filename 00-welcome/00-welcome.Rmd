@@ -122,6 +122,18 @@ class: center, middle
 
 ---
 
+## Reproducible vs Replicable
+
+```{r echo=FALSE, out.width="66%", fig.align="center"}
+knitr::include_graphics("img/leek_repro.jpeg")
+```
+
+<font size=2.5>
+Source: Patil, Peng, Leek (2019) A visual tool for defining reproducibility and replicability. <i>Nature Human Behaviour</i>
+</font>
+
+---
+
 ## Reproducibility as a trust scale
 
 <br/><br/>
@@ -189,7 +201,7 @@ knitr::include_graphics("img/good_enough.png")
 
 ---
 
-## Ambitious goal + many other concerns 
+## Ambitious goal + other concerns 
 
 We need an environment where
 
@@ -216,17 +228,28 @@ inseparable
 
 ## Roadmap
 
-1. Scriptability $\rightarrow$ R
+.large[
 
-2. Literate programming $\rightarrow$ R Markdown
+--
 
-3. Version control $\rightarrow$ Git / GitHub
+* Scriptability $\rightarrow$ R
 
-4. Scaling and automating $\rightarrow$ make
+--
+
+* Literate programming $\rightarrow$ R Markdown
+
+--
+
+* Version control $\rightarrow$ `git` / GitHub
+
+--
+
+* Scaling and automating $\rightarrow$ `make`
+]
 
 ---
 
 ## Computing access
 
-- Go to http://bit.ly/---
+- Go to [link TBD]()
 
