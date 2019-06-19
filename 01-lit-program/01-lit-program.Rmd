@@ -2,7 +2,7 @@
 title: "Literate Programming"
 subtitle: "Reproducible Computing <br> @ JSM 2019"
 author: "Colin Rundel"
-date: "June 24, 2018"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
