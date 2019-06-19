@@ -27,17 +27,20 @@ Version control is a system that records changes to a file or set of files over 
 
 ## Bad
 
-<img src="img/phd_comics_vc.gif" height="465px" />
+```{r echo=FALSE, out.width="50%", fig.align="center"}
+knitr::include_graphics("img/phd_comics_vc.gif")
+```
 
-<br><br>
+.footnote[
+Source: [Piled Higher and Deeper](http://www.phdcomics.com) by Jorge Cham
+]
 
-<font size="3">Source: Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com.</font>
 
 ---
 
-## Good
+## Better
 
-~~~
+```shell
     2013-10-14_manuscriptFish.doc
     2013-10-30_manuscriptFish.doc
     2013-11-05_manusctiptFish_intitialRyanEdits.doc
@@ -50,49 +53,46 @@ Version control is a system that records changes to a file or set of files over 
     2014-01-03_manuscriptFish_PLOSsubmitted.doc
     2014-02-15_manuscriptFish_PLOSrevision.doc
     2014-03-14_manuscriptFish_PLOSpublished.doc
-~~~
+```
 
----
-
-## Better - Saving everything together at once
-
-Everytime you make a save, you zip the entire directory that your project files are in and save it with a date.
+or everytime you reach a milestone, you zip the entire project directory and save it with a date.
 
 ---
 
 ## Best - Version Control
 
-<center>
-<img src="img/repo.png" width="600px" />
-</center>
 
-<br><br>
-
-<font size="3">Source: https://github.com/mine-cetinkaya-rundel/make-research-repro-unc-psy831</font>
 
 ---
 
 ## Version control systems
 
-- Start with a base version of the document, save just the changes you made at each step of the way.
-- Think of it as a tape: if you rewind the tape and start at the base document, then you can play back each change and end up with your latest version.
-<center>
-<img src="img/play-changes.png" width="400px" />
-</center>
-- "Playing back" different sets of changes onto the base document and getting different versions of the document.
-<center>
-<img src="img/merge.png" height="200px" />
-</center>
+- Start with a initial version of a document / file.
+- When you "save" just record the pieces of the file that changed.
 
-<font size="3">Source: [Software Carpentry](https://software-carpentry.org/).</font>
+```{r echo=FALSE, out.width="33%", fig.align="center"}
+knitr::include_graphics("img/play-changes.png")
+```
+
+- This creates a timeline for each and every file being tracked that lets you backwards and forwards in time by adding or removing these diffs.
+
+- "Playing back" different sets of diffs onto the original document allows for multiple versions of any file to exist at the same time.
+
+```{r echo=FALSE, out.width="20%", fig.align="center"}
+knitr::include_graphics("img/merge.png")
+```
+
+.footnote[
+Source: [Software Carpentry](https://software-carpentry.org/).
+]
 
 ---
 
 ## Git/GitHub
 
-- Easy to set up
+- Relatively easy to set up, almost universally available
 - Integrated with RStudio
-- GitHub's strong community: your colleagues are probably already there
+- Network Effect
 - Provides tools to help enhance collaboration
 - A common location to share your work
 
@@ -100,23 +100,23 @@ Everytime you make a save, you zip the entire directory that your project files 
 
 ## Commits
 
-<center>
-<img src="img/commits.png" width="800px" />
-</center>
+```{r echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/commits.png")
+```
 
 ---
 
 ## Diff
 
-<center>
-<img src="img/diff.png" width="900px" />
-</center>
+```{r echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/diff.png")
+```
 
 ---
 
 class: center, middle
 
-# Git in GitHub
+# Git and GitHub
 
 ---
 
@@ -243,30 +243,37 @@ class: center, middle
 
 ---
 
-## Git config
+## Git and R / RStudio
 
-- Go to the Terminal pane
+The instances of RStudio Cloud we are using already have git installed, but there are a couple of things we need to do to personalize our git configuration.
 
-- Type the following two lines of code, replacing the information in the quotation marks with your info:
+The `usethis` package makes this very straight forward.
 
-```shell
-git config --global user.email "your email"
-git config --global user.name "your name"
+.tinyish[
+```r
+usethis::use_git_config(
+  user.name = "Colin Rundel", 
+  user.email = "rundel@gmail.com"
+)
+
+usethis::git_vaccinate()
+## ✔ Adding '.Rproj.user', '.Rhistory', '.Rdata', '.DS_Store' to '/home/rundel/.gitignore'
+
+usethis::git_sitrep()
+## Git user
+## * Name: 'Colin Rundel'
+## * Email: 'rundel@gmail.com'
+## * Vaccinated: TRUE
+## usethis + git2r
+## * Default usethis protocol: <unset>
+## * git2r supports SSH: TRUE
+## * Credentials: '<usethis + git2r default behaviour>'
+## GitHub
+## * Personal access token: <unset>
+## Repo
+## ℹ No active usethis project.
 ```
-
-For example, for me these are
-
-```shell
-git config --global user.email "mine@stat.duke.edu"
-git config --global user.name "Mine Cetinkaya-Rundel"
-```
-
-To confirm that the changes have been implemented, run the following
-
-```shell
-git config --global user.email
-git config --global user.name
-```
+]
 
 ---
 
@@ -274,8 +281,10 @@ git config --global user.name
 
 For certain operations GitHub will require that you authenticate, in order to avoid having to type your username and password repeatedly we can ask git to cache our credentials
 
-```shell
-git config --global credential.helper 'cache --timeout=600000'
+```r
+usethis::use_git_config(
+  credential.helper = "cache --timeout=600000"
+)
 ```
 
 This will cache your username password for 600,000 seconds, or ~1 week. This cacheing occurs only on the machine where this is set (and where authentication occured) and when using https based url.
