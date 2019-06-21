@@ -11,7 +11,7 @@ data = list(
 ) 
 
 options(mc.cores = parallel::detectCores())
-full_fit <- rstan::stan("models/car_model.stan", data = data, 
+full_fit = rstan::stan("models/car_model.stan", data = data, 
                         iter = 1000, chains = 2, verbose = FALSE)
 
 saveRDS(full_fit, "results/car_fit.rds")

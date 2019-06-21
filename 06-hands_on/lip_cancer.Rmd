@@ -1,7 +1,7 @@
 ---
 title: Example - Scottish Lip Cancer
-author: "Mine Çetinkaya-Rundel & Colin Rundel"
-date: "June 24, 2018"
+author: "Colin Rundel"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
@@ -179,7 +179,7 @@ data = list(
 ) 
 
 options(mc.cores = parallel::detectCores())
-full_fit <- rstan::stan(model_code = car_model, data = data, 
+full_fit = rstan::stan(model_code = car_model, data = data, 
                         iter = 1000, chains = 2, verbose = FALSE)
 ```
 

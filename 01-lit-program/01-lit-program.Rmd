@@ -101,7 +101,7 @@ class: center, middle
 You got some data.
 
 - `WorldCupMatches-01.csv`: Match info for each game in pre-2000 World Cups
-- Codebook at https://github.com/mine-cetinkaya-rundel/repro-compute-isba18/blob/master/01-lit-program/data/README.md#codebook
+- Codebook in data/README.md
 - Ultimate goal: Visualize the total number of goals for each World Cup over time.
 
 .instructions[
