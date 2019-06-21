@@ -24,10 +24,9 @@ Workshop attendees will work through several exercises and get first-hand experi
 |:--------------|:----------------------------------------|
 | 08:30 - 09:00 | Welcome                                 |  
 | 09:00 - 09:40 | Literate programming                    |
-| 09:40 - 10:15 | Naming                                  |
+| 09:40 - 10:15 | Naming & Organization                   |
 | 10:15 - 10:30 | *Coffee break*                          |
-| 10:30 - 11:00 | Organization                            |
-| 11:00 - 12:30 | Version control with Git and GitHub     |
+| 10:30 - 12:30 | Version control with Git and GitHub     |
 | 12:30 - 14:00 | *Lunch break*                           |
 | 14:00 - 14:30 | Scaling reproducible projects           |
 | 14:30 - 15:15 | Introduction to make                    |
