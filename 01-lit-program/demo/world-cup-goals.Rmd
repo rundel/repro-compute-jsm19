@@ -1,6 +1,6 @@
 ---
 title: "World cup goals"
-author: "Mine Çetinkaya-Rundel"
+author: "Colin Rundel"
 date: "`r Sys.Date()`"
 output:
   html_document: default
@@ -19,7 +19,7 @@ football-playing nations of the world. It is contested every four years, match
 data from each game is maintained on the FIFA World Cup Archive website.
 
 ```{r load-data}
-wc <- read_csv("data/WorldCupMatches-01.csv")
+wc = read_csv("data/WorldCupMatches-01.csv")
 ```
 
 The figure below shows the total number of goals scored during world cup games 
@@ -27,7 +27,7 @@ between `r min(wc$year)` and `r max(wc$year)`. We can see that the total number
 of goals have been increasing over the year.
 
 ```{r calc-totals}
-wc_tots <- wc %>%
+wc_tots = wc %>%
   mutate(total_goals = home_team_goals + away_team_goals) %>%
   group_by(year) %>%
   summarise(total_goals_year = sum(total_goals))
