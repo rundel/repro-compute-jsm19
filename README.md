@@ -18,7 +18,7 @@ This workshop will cover:
 
 Workshop attendees will work through several exercises and get first-hand experience with using relevant tool-chains and techniques, including R/RStudio, literate programming with R Markdown, automation with make, and collaboration and version control with git/GitHub.
 
-## Schedule - TBD
+## Schedule (Tentative)
 
 | Time          | Activity                                |
 |:--------------|:----------------------------------------|
@@ -89,9 +89,9 @@ An R + RStudio computing environment will be provided for all students via RStud
 
 ## Instructor
 
-**[Colin Rundel](http://www2.stat.duke.edu/~cr173/)** - Duke University
+**[Colin Rundel](http://www2.stat.duke.edu/~cr173/)** - University of Edinburgh, Duke University
 
-Colin is a Assistant Professor of the Practice in the Department of Statistical Science at Duke University where he has developed and taught a number of Statistical Computing courses for undergraduate, master's and Ph.D. levels students. His pedagogical and research interests are in the area of statistical computing, data science, and spatial statistics.
+Colin recently started as a Lecturer in the School of Mathematics at the University of Edinburgh. Prior to this position he was an a Assistant Professor of the Practice in the Department of Statistical Science at Duke University. He has developed and taught a number of Statistical Computing courses for undergraduate, master's and Ph.D. levels students. His pedagogical and research interests are in the area of statistical computing, data science, and spatial statistics.
 
 ## Acknowledgements
 
