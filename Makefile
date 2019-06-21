@@ -9,8 +9,6 @@ RMD := 00-welcome/00-welcome.Rmd \
 HTML := $(patsubst %.Rmd, %.html, $(RMD))
 
 all: slides/README.pdf
-
-	
 	for file in $(RMD) ; do \
 		cd `dirname $$file`; \
 		Rscript -e "rmarkdown::render('`basename $$file`')"; \
