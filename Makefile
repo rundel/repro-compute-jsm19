@@ -13,6 +13,7 @@ all:
 		cd `dirname $$file`; \
 		Rscript -e "rmarkdown::render('`basename $$file`')"; \
 		cd ..; \
+		Rscript util/webshot.R $$file slides ; \
 	done
 
 
