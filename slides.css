@@ -87,6 +87,7 @@ li{
   margin: 10px 0;
 }
 
+.larger { font-size: 26px }
 .large { font-size: 22px }
 .midi { font-size: 18px }
 .small { font-size: 14px }

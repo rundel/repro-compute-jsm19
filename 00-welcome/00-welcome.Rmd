@@ -228,24 +228,31 @@ inseparable
 
 ## Roadmap
 
-.large[
+<br/> <br/>
 
 --
 
-* Scriptability $\rightarrow$ R
+.larger[ .center[
+Scriptability $\rightarrow$ R <br/> <br/>
+] ]
 
 --
 
-* Literate programming $\rightarrow$ R Markdown
+.larger[ .center[
+Literate programming $\rightarrow$ R Markdown <br/> <br/>
+] ]
 
 --
 
-* Version control $\rightarrow$ `git` / GitHub
+.larger[ .center[
+Version control $\rightarrow$ `git` / GitHub <br/> <br/>
+] ]
 
 --
 
-* Scaling and automating $\rightarrow$ `make`
-]
+.larger[ .center[
+Scaling and automating $\rightarrow$ `make`
+] ]
 
 ---
 
