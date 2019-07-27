@@ -58,7 +58,16 @@ friendly) markup language for creating pdf documents.
 
 ## Sample Markdown document
 
-<img src="img/markdown.png" alt="markdown" style="width:900px">
+```{r echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/markdown1.png")
+```
+
+---
+class: middle
+
+```{r echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/markdown2.png")
+```
 
 ---
 
@@ -68,15 +77,17 @@ Well, it's R + Markdown:
 
 - Ease of Markdown syntax
 
-- Rendering of R code to produce output and plots
+- Excution, rendering, and embedding of R code to produce output and plots
 
-- Ability to include LaTeX: e.g. $\hat{y} = \beta_0 + \beta_1 \times x$
+- Ability to include typeset mathematical expressions via LaTeX syntax: e.g. $\hat{y} = \beta_0 + \beta_1 \times x$
 
 ---
 
 ## Sample R Markdown document
 
-<img src="img/rmarkdown.png" alt="rmarkdown" style="width:1000px">
+```{r echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/markdown1.png")
+```
 
 ---
 
@@ -100,9 +111,9 @@ class: center, middle
 
 You got some data.
 
-- `WorldCupMatches-01.csv`: Match info for each game in pre-2000 World Cups
-- Codebook in data/README.md
-- Ultimate goal: Visualize the total number of goals for each World Cup over time.
+- You are given a data file: `WorldCupMatches-01.csv`, it contains results for each match in World Cups before 2000.
+- A codebook is included in data/README.md
+- Goal: Visualize the total number of goals for each World Cup over time.
 
 .instructions[
 Open `world-cup-goals.Rmd`. Knit the document. Then, update the **yaml** with your information, and knit again.
@@ -115,10 +126,11 @@ Open `world-cup-goals.Rmd`. Knit the document. Then, update the **yaml** with yo
 YAML: Yet another Markdown language
 
 - Fields like `title`, `subtitle`, `author`, `date`
-- You can also change `output` formats: `html_document` for web authoring, 
-`github_document` for markdown document easily viewable on GitHub, 
-`pdf_document` for PDF (requires TeX), `word_document` for MS Word 
-(requires Word)
+- You can also change `output` formats: 
+  - `html_document` for web authoring, 
+  - `github_document` for markdown documents which can be viewed on GitHub, 
+  - `pdf_document` for PDF (requires TeX), 
+  - `word_document` for MS Word (requires Word)
 - Can use inline R code in values (see `date`)
 
 ---
