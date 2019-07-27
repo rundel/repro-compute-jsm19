@@ -1,8 +1,9 @@
-# Reproducible Computing
-
 Continuing Education Course, JSM 2019
+
 Biometrics Section
+
 2019-07-27  
+
 8:30 am - 5 pm
 
 ## Abstract
