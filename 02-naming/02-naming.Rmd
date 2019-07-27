@@ -13,6 +13,18 @@ output:
       countIncrementalSlides: false
 ---
 
+## Naming things?
+
+<br><br><br><br>
+
+>There are only two hard things in Computer Science: cache invalidation and naming things.
+<br/>
+- Phil Karlton
+
+<br><br><br>
+
+---
+
 ## Face it
 
 - There are going to be files
@@ -72,13 +84,8 @@ fig02_histogram-talk-attendance.png
 3. Plays well with OS ordering
 
 ---
-class: center, middle
 
-# Machine Parsable
-
----
-
-## Machine readable
+## Machine Parsable
 
 - Search (Regular expression and globbing) friendly: Avoid spaces, punctuation, accented 
 characters, case sensitivity
@@ -110,11 +117,21 @@ WorldCup-Players-02.csv	WorldCup-Players-04.csv
 
 ---
 
-## Same using regex in R
+## Using globs or regexs in R
 
-```
+
+### glob
+```r
 > library(fs)
 > dir_ls(glob = "*Players*")
+WorldCup-Players-01.csv WorldCup-Players-02.csv WorldCup-Players-03.csv 
+WorldCup-Players-04.csv 
+```
+
+### regex
+```r
+> library(fs)
+> dir_ls(regexp = "Players-\\d{2}")
 WorldCup-Players-01.csv WorldCup-Players-02.csv WorldCup-Players-03.csv 
 WorldCup-Players-04.csv 
 ```
@@ -140,7 +157,7 @@ For example:
 
 ---
 
-## Recap: Machine readable
+## Recap: Machine parsable
 
 - Easy to search for files later
 
@@ -156,41 +173,30 @@ For example:
 
 ---
 
-class: center, middle
-
-# Human readable
-
----
-
 ## Human readable
 
 - Name contains info on content
 
 - Connects to concept of a *slug* from semantic URLs
 
+```{r out.width="100%", echo=FALSE}
+knitr::include_graphics("img/nytimes.png")
+```
+
+
 ---
 
 ## Example
 
-**Which set of file(name)s do you want at 3 a.m. before a deadline?**
+Which set of file(name)s do you want at 3 a.m. before a deadline?
 
-![human_readable_not_options](img/human-readable-not-options.png)
-
----
-
-## Recap: Human readable
-
-Easy to figure out what it is, based on its name
+```{r echo=FALSE, fig.align="left", out.width="90%"}
+knitr::include_graphics("img/human-readable-not-options.png")
+```
 
 ---
 
-class: center, middle
-
-# Plays well with OS ordering
-
----
-
-## Plays well with default ordering
+## Plays well with OS default ordering
 
 - Put something numeric first
 
@@ -384,7 +390,9 @@ here::here("data/raw", "data.csv")
 
 ## Tips
 
-- Use a `from_joe` directory: Suppose your collaborator and data producer is Joe. Just leave communucation and files from Joe in this directory and copy or symlink as needed and record this in the project README.
+--
+
+- Keep / protect the raw data
 
 --
 
