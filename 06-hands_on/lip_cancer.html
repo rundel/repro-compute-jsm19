@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Example - Scottish Lip Cancer</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Colin Rundel" />
+    <meta name="date" content="2019-07-27" />
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Example - Scottish Lip Cancer
+### Colin Rundel
+### July 27, 2019
+
+---
+
+exclude: true
+
+
+
+
+
+---
+
+## The data
+
+.small[
+
+```r
+lip_cancer
+```
+
+```
+## Simple feature collection with 56 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -8.621389 ymin: 54.62722 xmax: -0.7530556 ymax: 60.84444
+## epsg (SRID):    4267
+## proj4string:    +proj=longlat +ellps=clrk66 +nadgrids=@conus,@alaska,@ntv2_0.gsb,@ntv1_can.dat +no_defs
+## # A tibble: 56 x 8
+##    District    id                  geometry Observed Expected   AFF Latitude
+##    &lt;chr&gt;    &lt;dbl&gt;        &lt;MULTIPOLYGON [°]&gt;    &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;
+##  1 Sutherl…    12 (((-4.506667 58.56777, -…        5      1.8    16     58.1
+##  2 Nairn       13 (((-3.79893 57.61441, -3…        3      1.1    10     57.5
+##  3 Inverne…    19 (((-5.103908 57.4972, -4…        9      5.5     7     57.2
+##  4 Banff-B…     2 (((-2.822545 57.70421, -…       39      8.7    16     57.6
+##  5 Bedenoch    17 (((-4.63596 56.83384, -4…        2      1.1    10     57.1
+##  6 Kincard…    16 (((-2.074866 57.15196, -…        9      4.6    16     57  
+##  7 Angus       21 (((-2.33191 56.79082, -2…       16     10.5     7     56.8
+##  8 Dundee      50 (((-2.691373 56.50128, -…        6     19.6     1     56.4
+##  9 NE Fife     15 (((-3.2167 56.35458, -3.…       17      7.8     7     56.3
+## 10 Kirkcal…    25 (((-2.915809 56.2049, -2…       19     15.5     1     56.2
+## # … with 46 more rows, and 1 more variable: Longitude &lt;dbl&gt;
+```
+]
+
+---
+## Occurances
+
+&lt;img src="lip_cancer_files/figure-html/plot-obs-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Neighbors
+
+
+
+
+
+
+
+&lt;img src="lip_cancer_files/figure-html/neigh_plot-1.png" width="66%" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
