@@ -8,3 +8,4 @@ include:
   - README.md
   - slides.css
   - slides/
+theme: jekyll-theme-tactile
