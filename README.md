@@ -13,7 +13,7 @@ This workshop will cover:
 
 Workshop attendees will work through several exercises and get first-hand experience with using relevant tool-chains and techniques, including R/RStudio, literate programming with R Markdown, automation with make, and collaboration and version control with git/GitHub.
 
-## Schedule (Tentative)
+## Schedule
 
 | Time          | Activity                                | Slides                          |
 |:--------------|:----------------------------------------|:--------------------------------|
