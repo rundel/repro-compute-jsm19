@@ -6,20 +6,26 @@ RMD := 00-welcome/00-welcome.Rmd \
 		   05-make/05-make.Rmd \
 		   07-parting-remarks/07-parting-remarks.Rmd
 
-HTML := $(patsubst %.Rmd, %.html, $(RMD))
 
-all: slides/README.pdf
+all: docs/slides docs/README.pdf
 	for file in $(RMD) ; do \
 		cd `dirname $$file`; \
+		echo `pwd`; \
 		Rscript -e "rmarkdown::render('`basename $$file`')"; \
+		cp *.html ../docs/slides; \
 		cd ..; \
-		Rscript util/webshot.R $$file slides ; \
+		Rscript util/webshot.R $$file docs/slides ; \
 	done
 
-slides/README.pdf: README.md
-	Rscript -e "rmarkdown::render('README.md')"
-	Rscript util/webshot.R README.html slides/README.pdf
-	rm -f README.html
+docs/slides: 
+	mkdir -p docs/slides
+
+docs/index.html: README.md
+	mkdir -p docs/slides
+	Rscript -e "rmarkdown::render('README.md', 	output_file = 'docs/index.html')"
+
+docs/README.pdf: docs/index.html
+	Rscript util/webshot.R docs/index.html docs/README.pdf
 
 clean:
-	rm -f $(HTML)
+	rm -rf docs/
