@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Scaling reproducible projects</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Colin Rundel" />
+    <meta name="date" content="2018-06-24" />
+    <link rel="stylesheet" href="../slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Scaling reproducible projects
+## Reproducible Computing <br> @ JSM 2019
+### Colin Rundel
+### June 24, 2018
+
+---
+
+exclude: true
+
+
+
+---
+class: middle
+
+## [Example - Scottish Lip Cancer Slides](example-lip_cancer.Rmd)
+
+---
+
+### The pain points
+
+There are a couple of code blocks that take awhile to run:
+
+1. `get-data`
+
+2. `neighbors`
+
+3. `stan-fit`
+
+--
+
+&lt;br/&gt;
+
+.center[
+What makes each of these slow?
+]
+
+---
+
+### `get-data`
+
+```r
+...
+
+shape_dir = here("data/shapefiles")
+dir.create(shape_dir, showWarnings = FALSE, recursive = TRUE)
+
+base_url = "http://web1.sph.emory.edu/users/lwaller/book/ch9/"
+shapefiles = c("scot.shp", "scot.dbf", "scot.shx")
+
+for(file in shapefiles) {
+*  download.file(
+*    file.path(base_url, file), 
+*    destfile = file.path(shape_dir, file), 
+*    quiet = TRUE
+*  )
+}
+
+...
+```
+---
+
+### `neighbors`
+
+```r
+*d = sf::st_distance(lip_cancer %&gt;% sf::st_set_crs(NA))
+class(d) = NULL
+
+W = (d == 0.0) * 1L
+
+m = rowSums(W)
+lip_cancer$n_neighbors = m
+
+plot(lip_cancer[,"n_neighbors"], asp=1, axes=TRUE)
+```
+
+---
+
+### `stan-fit`
+
+```r
+data = list(
+  n = nrow(lip_cancer), p = 1,
+  W = W, m = m,
+  log_offset = log(lip_cancer$Expected),
+  y = lip_cancer$Observed,
+  X = matrix(1, nrow = nrow(lip_cancer), ncol=1)
+) 
+
+options(mc.cores = parallel::detectCores())
+*full_fit = rstan::stan(model_code = car_model, data = data, 
+*                       iter = 1000, chains = 2, verbose = FALSE)
+```
+
+---
+
+### Roll your own cache
+
+It is fairly straight forward to use R's ability to serialize objects in order to create a simple cache for slow running code.
+
+--
+
+For example, we can rewrite the `neighbors` code chunk as follows
+
+```r
+*if (!file.exists("dist_mat.rds")) {
+  d = sf::st_distance(lip_cancer)
+*  saveRDS(d, "dist_mat.rds")
+} else {
+*  d = readRDS("dist_mat.rds")
+}
+class(d) = NULL
+
+W = (d == 0.0) * 1L
+
+m = rowSums(W)
+lip_cancer$n_neighbors = m
+
+plot(lip_cancer[,"n_neighbors"], asp=1, axes=TRUE)
+```
+
+---
+
+### Aside - RDS vs Rdata
+
+Probably the most common approach for serializing and read R objects are `save` and `load` respectively.
+
+Generally using Rdata files (via `save` and `load`) is not a best practice because they both save and restore objects *and* their names. This can result in objects being silently overwritten when an Rdata file is loaded and it also makes it difficult to discover exactly what objects and values are stored in an Rdata file.
+
+`saveRDS` instead saves only a single R object's value and `readRDS` requires that the user explicitly give a name to the object when it is read in.
+
+---
+
+### Issues
+
+* No depency tracking / invalidation
+
+* Explicitly need to delete `rds` file to rerun code
+
+* Quick and dirty solution that does not scale
+
+---
+
+### knitr and `cached=TRUE`
+
+knitr is able to accomplish something similar by caching the results of code chunks when explicitly asked to via the `cached` chunk option.
+
+This cacheing scheme takes into account all objects created, side-effects like plots and text output, basic environmental details like packages used, and automatic or manual specification of dependency between code chunks.
+
+&lt;br/&gt;
+
+See more at Yihui's [Examples for the cache feature](https://yihui.name/knitr/demo/cache/).
+
+---
+
+### Issues
+
+* It is important to understand under what circumstances a cached code chunk will become invalidated, see discussion [here](https://yihui.name/knitr/demo/cache/)
+
+* Constructing code chunk level dependency structures is cumbersome and can be quite brittle
+
+* `autodep` works reasonably well but has *many* edge cases (e.g. does not work with `source`)
+
+* Having to nuke the entire cache directory by hand is a semi-regular experience.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

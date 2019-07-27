@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Reproducible Computing   @ JSM 2019</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Colin Rundel" />
+    <meta name="date" content="2019-07-27" />
+    <link rel="stylesheet" href="../slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducible Computing <br> @ JSM 2019
+### Colin Rundel
+### July 27, 2019
+
+---
+
+
+class: center, middle
+
+# Reproducible Computing
+
+---
+
+## Schedule
+
+| Time          | Activity                                |
+|:--------------|:----------------------------------------|
+| 08:30 - 10:15 | Literate programming and organization  |  
+| 10:15 - 10:30 | :coffee:                                |       
+| 10:30 - 12:30 | Version control with Git and GitHub     |  
+| 12:30 - 14:00 | :fork_and_knife:                        |               
+| 14:00 - 15:15 | Scaling reproducible projects, make     |    
+| 15:15 - 15:30 | :coffee:                                |       
+| 15:30 - 17:00 | More make, wrapup                       | 
+
+---
+
+class: center, middle
+
+# Reproducibility: &lt;br/&gt; Who cares?
+
+---
+
+## Science retracts gay marriage paper without agreement of lead author
+
+- In May 2015 Science retracted a study of how canvassers can sway 
+people's opinions about gay marriage published just 5 months earlier.
+
+- Science Editor-in-Chief Marcia McNutt: Original survey data not made 
+available for independent reproduction of results. + Survey incentives 
+misrepresented. + Sponsorship statement false.
+
+- Two Berkeley grad students who attempted to replicate the study quickly 
+discovered that the data must have been faked.
+
+- Methods we'll discuss today can't prevent this, but they can make it 
+easier to discover issues.
+
+&lt;font size="2"&gt;Source: http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent&lt;/font&gt;
+
+---
+
+## Bad spreadsheet merge kills depression paper, quick fix resurrects it
+
+- **Original conclusion:** Lower levels of CSF IL-6 were associated with 
+current depression and with future depression [...].
+
+- **Revised conclusion:** Higher levels of CSF IL-6 and IL-8 were 
+associated with current depression [...].
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;font size=2.5&gt;
+Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/
+&lt;/font&gt;
+
+---
+
+## Divorce study felled by a coding error gets a second chance
+
+- **Original conclusion:** The risk of divorce in a heterosexual marriage increases when the wife falls ill, but not the husband. 
+
+- **Corrected conclusion:** Based on the corrected analysis, we conclude that there are not gender differences in the relationship between gender, pooled illness onset, and divorce.
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;font size=2.5&gt;
+Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151
+&lt;/font&gt;
+
+---
+
+## Divorce study retraction: Editor's note
+
+- "The research environment is fast-paced given the ethos to “publish or perish"."
+
+- "[...] research is becoming increasingly complex, with greater calls for transdisciplinary collaborations, “big data,” and more sophisticated research questions and methods [...] data sets often have multiple files that require merging, change the wording of questions over time, provide incomplete codebooks, and have unclear and sometimes duplicative variables."
+
+- "Given these issues, I would not be surprised if coding errors were fairly common [...]"
+
+&lt;br&gt;
+
+&lt;font size=2.5&gt;Source: http://retractionwatch.com/2015/09/10/divorce-study-felled-by-a-coding-error-gets-a-second-chance/#more-32151&lt;/font&gt;
+
+
+---
+
+## One in five genetics papers contains errors thanks to Microsoft Excel
+
+* "Autoformatting in Microsoft Excel has caused many a headache—but now, a new study shows that one in five genetics papers in top scientific journals contains errors from the program, The Washington Post reports. The errors often arose when gene names in a spreadsheet were automatically changed to calendar dates or numerical values."
+
+* "For example, one gene called Septin-2 is commonly shortened to SEPT2, but is changed to 2-SEP and stored as the date 2 September 2016 by Excel."
+
+&lt;br/&gt;
+
+&lt;font size=2.5&gt;
+Source: https://www.sciencemag.org/news/2016/08/one-five-genetics-papers-contains-errors-thanks-microsoft-excel
+&lt;/font&gt;
+
+---
+
+class: center, middle
+
+# Reproducibility: &lt;br/&gt; Why should you care?
+
+---
+
+## Reproducible vs Replicable
+
+&lt;img src="img/leek_repro.jpeg" width="66%" style="display: block; margin: auto;" /&gt;
+
+&lt;font size=2.5&gt;
+Source: Patil, Peng, Leek (2019) A visual tool for defining reproducibility and replicability. &lt;i&gt;Nature Human Behaviour&lt;/i&gt;
+&lt;/font&gt;
+
+---
+
+## Reproducibility as a trust scale
+
+&lt;br/&gt;&lt;br/&gt;
+
+&lt;img src="img/trustscale3.png" width="1705" style="display: block; margin: auto;" /&gt;
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+&lt;font size=2.5&gt;
+Source: Gabriel Becker - [Keynote](https://gmbecker.github.io/MayInstituteKeynote2019/outline.html) - Advanced R Course - May Institute for Computational Proteomics 2019
+&lt;/font&gt;
+
+---
+
+## Think back to every time...
+
+- The results in Table 1 don't seem to correspond to those in Figure 2.
+- In what order do I run these scripts?
+- Where did we get this data file?
+- Why did I omit those samples?
+- How did I make that figure?
+- "Your script is now giving an error."
+- "The attached is similar to the code we used."
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;font size=2.5&gt;Source: Karl Broman - [steps to reproducible research](https://kbroman.org/steps2rr/)&lt;/font&gt;
+
+---
+
+## No collaborators?
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&gt;Your closest collaborator is you six months ago, &lt;br&gt;
+but you don’t reply to emails.
+&lt;br&gt;
+- Mark Holder
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+---
+
+class: center, middle
+
+# Reproducibility: &lt;br/&gt; How?
+
+---
+
+## Reproducibility checklist
+
+- Are the tables and figures reproducible from the code and data?
+- Does the code actually do what you think it does?
+- In addition to what was done, is it clear *why* it was done? (e.g., how were parameter settings chosen?)
+- Can the code be used for other data?
+- Can you extend the code to do other things?
+
+---
+
+&lt;img src="img/good_enough.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Ambitious goal + other concerns 
+
+We need an environment where
+
+- data, analysis, and results are tightly connected, or better yet, 
+inseparable
+
+- reproducibility is built in
+    + the original data remains untouched
+    + all data manipulations and analyses are inherently documented
+
+- documentation is human readable and syntax is minimal
+
+---
+
+## Toolkit
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+![toolkit](img/toolkit.png)
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+---
+
+## Roadmap
+
+&lt;br/&gt; &lt;br/&gt;
+
+--
+
+.larger[ .center[
+Scriptability `\(\rightarrow\)` R &lt;br/&gt; &lt;br/&gt;
+] ]
+
+--
+
+.larger[ .center[
+Literate programming `\(\rightarrow\)` R Markdown &lt;br/&gt; &lt;br/&gt;
+] ]
+
+--
+
+.larger[ .center[
+Version control `\(\rightarrow\)` `git` / GitHub &lt;br/&gt; &lt;br/&gt;
+] ]
+
+--
+
+.larger[ .center[
+Scaling and automating `\(\rightarrow\)` `make`
+] ]
+
+---
+
+## Computing access
+
+- Go to [link TBD]()
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
