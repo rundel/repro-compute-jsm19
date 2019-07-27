@@ -25,17 +25,17 @@ Workshop attendees will work through several exercises and get first-hand experi
 
 | Time          | Activity                                | Slides                          |
 |:--------------|:----------------------------------------|:--------------------------------|
-| 08:30 - 09:00 | Welcome                                 | [html](slides/00-welcome.html), [pdf](slides/00-welcome.pdf) 
-| 09:00 - 09:40 | Literate programming                    | [html](slides/01-lit-program.html), [pdf](slides/01-lit-program.pdf) 
-| 09:40 - 10:15 | Naming & Organization                   | [html](slides/02-naming.html), [pdf](slides/02-naming.pdf) 
+| 08:30 - 09:00 | Welcome                                 | [html](00-welcome/00-welcome.html), [pdf](slides/00-welcome.pdf) 
+| 09:00 - 09:40 | Literate programming                    | [html](01-lit-program/01-lit-program.html), [pdf](slides/01-lit-program.pdf) 
+| 09:40 - 10:15 | Naming & Organization                   | [html](02-naming/02-naming.html), [pdf](slides/02-naming.pdf) 
 | 10:15 - 10:30 | *Coffee break*                          |
-| 10:30 - 12:30 | Version control with Git and GitHub     | [html](slides/03-git.html), [pdf](slides/03-git.pdf) 
+| 10:30 - 12:30 | Version control with Git and GitHub     | [html](03-git/03-git.html), [pdf](slides/03-git.pdf) 
 | 12:30 - 14:00 | *Lunch break*                           |
-| 14:00 - 14:30 | Scaling reproducible projects           | [html](slides/04-scaling.html), [pdf](slides/04-scaling.pdf) 
-| 14:30 - 15:15 | Introduction to make                    | [html](slides/05-make.html), [pdf](slides/05-make.pdf) 
+| 14:00 - 14:30 | Scaling reproducible projects           | [html](04-scaling/04-scaling.html), [pdf](slides/04-scaling.pdf) 
+| 14:30 - 15:15 | Introduction to make                    | [html](05-make/05-make.html), [pdf](slides/05-make.pdf) 
 | 15:15 - 15:30 | *Coffee break*                          |
 | 15:30 - 16:30 | make in action                          | 
-| 16:30 - 17:00 | Parting remarks                         | [html](slides/07-parting-remarks.html), [pdf](slides/07-parting-remarks.pdf) 
+| 16:30 - 17:00 | Parting remarks                         | [html](07-parting-remarks/07-parting-remarks.html), [pdf](slides/07-parting-remarks.pdf) 
 
 
 ### Welcome, literate programming, and naming
