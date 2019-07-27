@@ -1,3 +1,5 @@
+# Reproducible Computing
+
 Continuing Education Course, JSM 2019
 
 Biometrics Section
@@ -21,9 +23,9 @@ Workshop attendees will work through several exercises and get first-hand experi
 
 ## Schedule (Tentative)
 
-| Time          | Activity                                |
-|:--------------|:----------------------------------------|
-| 08:30 - 09:00 | Welcome                                 |  
+| Time          | Activity                                |                           |
+|:--------------|:----------------------------------------|:--------------------------|
+| 08:30 - 09:00 | Welcome                                 | Slides [html](slides/00-welcome.html), [pdf](slides/00-welcome.pdf) 
 | 09:00 - 09:40 | Literate programming                    |
 | 09:40 - 10:15 | Naming & Organization                   |
 | 10:15 - 10:30 | *Coffee break*                          |
