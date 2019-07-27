@@ -1,14 +1,4 @@
-# Reproducible Computing
-
-Continuing Education Course, JSM 2019
-
-Biometrics Section
-
-2019-07-27  
-
-8:30 am - 5 pm
-
-## Abstract
+# Abstract
 
 Success in statistics and data science is dependent on the development of both analytical and computational skills. 
 
@@ -21,7 +11,7 @@ This workshop will cover:
 
 Workshop attendees will work through several exercises and get first-hand experience with using relevant tool-chains and techniques, including R/RStudio, literate programming with R Markdown, automation with make, and collaboration and version control with git/GitHub.
 
-## Schedule (Tentative)
+# Schedule (Tentative)
 
 | Time          | Activity                                | Slides                          |
 |:--------------|:----------------------------------------|:--------------------------------|
@@ -38,7 +28,9 @@ Workshop attendees will work through several exercises and get first-hand experi
 | 16:30 - 17:00 | Parting remarks                         | [html](07-parting-remarks/07-parting-remarks.html), [pdf](slides/07-parting-remarks.pdf) 
 
 
-### Welcome, literate programming, and naming
+# Topic Details
+
+## Welcome, literate programming, and naming
 
 - Recognize the problems that reproducible research helps address and identify 
 pain points in getting your analysis to be reproducible.
@@ -49,7 +41,7 @@ your research more reproducible.
   - Hands on activity: Updating an analysis when the source data changes
 - Naming best practices
 
-### Organization and version control with Git and GitHub
+## Organization and version control with Git and GitHub
 
 - Project organization
   - File and folder organization for projects
@@ -72,7 +64,7 @@ your research more reproducible.
   - Demonstrate the ability to host code from RStudio to Github.
 - usethis Package
 
-### Scaling reproducible projects + Make 
+## Scaling reproducible projects + Make 
 
 - Practical example - Scottish lip cancer
   - Reproducible R Markdown document with "full Bayesian analysis" including data munging, EDA, model fitting and analysis.
@@ -86,21 +78,21 @@ your research more reproducible.
 
 
 
-## Computing requirements
+# Computing requirements
 
 An R + RStudio computing environment will be provided for all students via RStudio Cloud. All that will be needed the day of the event is a laptop and a Google Account that can be used for authentication.
 
-## Instructor
+# Instructor
 
 **[Colin Rundel](http://www2.stat.duke.edu/~cr173/)** - University of Edinburgh, Duke University
 
 Colin recently started as a Lecturer in the School of Mathematics at the University of Edinburgh. Prior to this position he was an a Assistant Professor of the Practice in the Department of Statistical Science at Duke University. He has developed and taught a number of Statistical Computing courses for undergraduate, master's and Ph.D. levels students. His pedagogical and research interests are in the area of statistical computing, data science, and spatial statistics.
 
-## Acknowledgements
+# Acknowledgements
 
 - [Data Carpentry](https://github.com/datacarpentry)'s modules on naming, organization, and version control.
 - [Happy git with R](http://happygitwithr.com/) by [Jenny Bryan](http://github.com/jennybc).
 
-## License
+# License
 
 Materials in this repository are licensed under [CC Attribution 4.0 International](LICENSE.md).

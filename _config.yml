@@ -1,3 +1,4 @@
+theme: jekyll-theme-tactile
 plugins:
   - jemoji
   - jekyll-relative-links
@@ -6,6 +7,6 @@ relative_links:
   collections: true
 include:
   - README.md
+  - LICENSE.md
   - slides.css
   - slides/
-theme: jekyll-theme-tactile
