@@ -70,9 +70,18 @@ lip_cancer
 
 
 
+```r
+lc_sp = as(lip_cancer, 'Spatial')
+lc_n_sf = lc_sp %&gt;% 
+  spdep::poly2nb() %&gt;%
+  spdep::nb2lines(coords = sp::coordinates(lc_sp)) %&gt;%
+  as("sf") %&gt;%
+  st_set_crs(st_crs(lip_cancer)) %&gt;%
+  st_geometry()
+```
 
 
-&lt;img src="lip_cancer_files/figure-html/neigh_plot-1.png" width="66%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Figs/Fig01-Neighborhood_connection_plot/fig.png" width="66%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

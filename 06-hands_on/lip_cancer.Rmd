@@ -32,31 +32,7 @@ theme_set(theme_bw())
 ```
 
 ```{r get-data, include=FALSE}
-## Get data
-datafile = "http://web1.sph.emory.edu/users/lwaller/book/ch2/scotland.dat"
-
-col_names = read.table(datafile, nrows=1, sep=" ", stringsAsFactors = FALSE) %>% 
-  dplyr::select(2:7) %>%
-  unlist()
-
-data = read.table(datafile, header=FALSE, skip=1) %>%
-  setNames(col_names)
-
-## Get shapefile(s)
-shape_dir = tempdir()
-
-base_url = "http://web1.sph.emory.edu/users/lwaller/book/ch9/"
-shapefiles = c("scot.shp", "scot.dbf", "scot.shx")
-for(file in shapefiles) {
-  download.file(file.path(base_url, file), destfile = file.path(shape_dir, file), quiet = TRUE)
-}
-
-## Combine
-lip_cancer = sf::read_sf(shape_dir) %>%
-  sf::st_set_crs("+proj=longlat +datum=NAD27 +no_defs") %>%
-  dplyr::rename(Name = NAME, District = ID) %>% 
-  dplyr::full_join(data) %>%
-  dplyr::rename(id = District, District = Name, AFF = `%AFF`)
+lip_cancer = readRDS(here::here("data/lip_cancer.rds"))
 ```
 
 ---
@@ -87,7 +63,7 @@ lip_cancer %>%
 ## Neighbors
 
 ```{r neighbors, echo=FALSE, warning=FALSE}
-d = sf::st_distance(lip_cancer)
+d = readRDS(here::here("data/dist.rds"))
 class(d) = NULL
 
 W = (d == 0.0) * 1L
@@ -98,7 +74,7 @@ lip_cancer$n_neighbors = m
 ```
 
 
-```{r neigh_graph, echo=FALSE}
+```{r neigh_graph, eval=FALSE}
 lc_sp = as(lip_cancer, 'Spatial')
 lc_n_sf = lc_sp %>% 
   spdep::poly2nb() %>%
@@ -110,7 +86,5 @@ lc_n_sf = lc_sp %>%
 
 
 ```{r neigh_plot, echo=FALSE, out.width = "66%"}
-ggplot(lip_cancer) + 
-  geom_sf(aes(fill=n_neighbors), color="white", size=0.5) +
-  geom_sf(data = lc_n_sf, color = "orange")
+knitr::include_graphics("Figs/Fig01-Neighborhood_connection_plot/fig.png")
 ```
