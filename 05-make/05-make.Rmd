@@ -2,7 +2,7 @@
 title: "Introduction to `make`"
 subtitle: "Reproducible Computing <br> @ JSM 2019"
 author: "Colin Rundel"
-date: "June 24, 2018"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
@@ -52,7 +52,7 @@ depend1: other_depend
     step2
 ```
 
-The targets and their dependencies must form a directed acyclic graph - which is how make evaluates what steps to run and in what order.
+The targets and their dependencies must form a directed acyclic graph - which is how `make` evaluates what steps to run and in what order.
 
 ---
 
@@ -70,7 +70,7 @@ Some important features / requirements:
   
   - The solution is to string commands together into a single step using `;` or `&&`.
 
-* To stop a step from echoing its command when running predix it with a `@`.
+* To stop a step from echoing its command when running prefix it with a `@`.
 
 ---
 ## Example 1 - Dependencies
