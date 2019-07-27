@@ -2,7 +2,7 @@
 title: "Scaling reproducible projects"
 subtitle: "Reproducible Computing <br> @ JSM 2019"
 author: "Colin Rundel"
-date: "June 24, 2018"
+date: "July 27, 2019"
 output:
   xaringan::moon_reader:
     css: "../slides.css"
@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ---
 class: middle
 
-## [Example - Scottish Lip Cancer Slides](example-lip_cancer.Rmd)
+## [Example - Scottish Lip Cancer Slides](demo/lip_cancer.Rmd)
 
 ---
 
@@ -36,8 +36,6 @@ There are a couple of code blocks that take awhile to run:
 1. `get-data`
 
 2. `neighbors`
-
-3. `stan-fit`
 
 --
 
@@ -82,26 +80,6 @@ W = (d == 0.0) * 1L
 
 m = rowSums(W)
 lip_cancer$n_neighbors = m
-
-plot(lip_cancer[,"n_neighbors"], asp=1, axes=TRUE)
-```
-
----
-
-### `stan-fit`
-
-```r
-data = list(
-  n = nrow(lip_cancer), p = 1,
-  W = W, m = m,
-  log_offset = log(lip_cancer$Expected),
-  y = lip_cancer$Observed,
-  X = matrix(1, nrow = nrow(lip_cancer), ncol=1)
-) 
-
-options(mc.cores = parallel::detectCores())
-*full_fit = rstan::stan(model_code = car_model, data = data, 
-*                       iter = 1000, chains = 2, verbose = FALSE)
 ```
 
 ---
@@ -127,19 +105,17 @@ W = (d == 0.0) * 1L
 
 m = rowSums(W)
 lip_cancer$n_neighbors = m
-
-plot(lip_cancer[,"n_neighbors"], asp=1, axes=TRUE)
 ```
 
 ---
 
 ### Aside - RDS vs Rdata
 
-Probably the most common approach for serializing and read R objects are `save` and `load` respectively.
+Probably the most common approach for serializing and read R objects are the `save` and `load` functions, respectively.
 
-Generally using Rdata files (via `save` and `load`) is not a best practice because they both save and restore objects *and* their names. This can result in objects being silently overwritten when an Rdata file is loaded and it also makes it difficult to discover exactly what objects and values are stored in an Rdata file.
+Generally using Rdata files (via `save` and `load`) is not considered a best practice, this is because they both save and restore objects *and* their names. This can result in objects being silently overwritten when an Rdata file is loaded and it also makes it difficult to discover exactly what objects and values are stored in an Rdata file.
 
-`saveRDS` instead saves only a single R object's value and `readRDS` requires that the user explicitly give a name to the object when it is read in.
+`saveRDS` instead saves only a single R object and `readRDS` requires that the user explicitly give a name to the object when it is read in.
 
 ---
 
@@ -147,7 +123,7 @@ Generally using Rdata files (via `save` and `load`) is not a best practice becau
 
 * No depency tracking / invalidation
 
-* Explicitly need to delete `rds` file to rerun code
+* Need to delete `rds` file or explicitly rerun *some* of the code
 
 * Quick and dirty solution that does not scale
 
