@@ -1,0 +1,116 @@
+---
+title: Example - Scottish Lip Cancer
+author: "Colin Rundel"
+date: "July 27, 2019"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+exclude: true
+
+```{r setup, include=FALSE}
+options(
+  width = 80, 
+  tibble.width = 80
+)
+
+knitr::opts_chunk$set(
+  fig.align = "center",
+  dpi = 200
+)
+
+library(dplyr)
+library(ggplot2)
+library(sf)
+
+theme_set(theme_bw())
+```
+
+```{r get-data, include=FALSE}
+## Get data
+datafile = "http://web1.sph.emory.edu/users/lwaller/book/ch2/scotland.dat"
+
+col_names = read.table(datafile, nrows=1, sep=" ", stringsAsFactors = FALSE) %>% 
+  dplyr::select(2:7) %>%
+  unlist()
+
+data = read.table(datafile, header=FALSE, skip=1) %>%
+  setNames(col_names)
+
+## Get shapefile(s)
+shape_dir = tempdir()
+
+base_url = "http://web1.sph.emory.edu/users/lwaller/book/ch9/"
+shapefiles = c("scot.shp", "scot.dbf", "scot.shx")
+for(file in shapefiles) {
+  download.file(file.path(base_url, file), destfile = file.path(shape_dir, file), quiet = TRUE)
+}
+
+## Combine
+lip_cancer = sf::read_sf(shape_dir) %>%
+  sf::st_set_crs("+proj=longlat +datum=NAD27 +no_defs") %>%
+  dplyr::rename(Name = NAME, District = ID) %>% 
+  dplyr::full_join(data) %>%
+  dplyr::rename(id = District, District = Name, AFF = `%AFF`)
+```
+
+---
+
+## The data
+
+.small[
+```{r print-data}
+lip_cancer
+```
+]
+
+---
+## Occurances
+
+```{r plot-obs, echo=FALSE, out.width="100%", fig.height=4}
+lip_cancer %>%
+  select(Observed, Expected) %>%
+  mutate(Observed/Expected) %>%
+  tidyr::gather(var, value, -geometry) %>%
+  ggplot(aes(fill = log(value))) +
+    geom_sf(color="white", size=0.5) +
+    facet_wrap(~forcats::as_factor(var))
+```
+
+---
+
+## Neighbors
+
+```{r neighbors, echo=FALSE, warning=FALSE}
+d = sf::st_distance(lip_cancer)
+class(d) = NULL
+
+W = (d == 0.0) * 1L
+diag(W) = 0
+
+m = rowSums(W)
+lip_cancer$n_neighbors = m
+```
+
+
+```{r neigh_graph, echo=FALSE}
+lc_sp = as(lip_cancer, 'Spatial')
+lc_n_sf = lc_sp %>% 
+  spdep::poly2nb() %>%
+  spdep::nb2lines(coords = sp::coordinates(lc_sp)) %>%
+  as("sf") %>%
+  st_set_crs(st_crs(lip_cancer)) %>%
+  st_geometry()
+```
+
+
+```{r neigh_plot, echo=FALSE, out.width = "66%"}
+ggplot(lip_cancer) + 
+  geom_sf(aes(fill=n_neighbors), color="white", size=0.5) +
+  geom_sf(data = lc_n_sf, color = "orange")
+```
